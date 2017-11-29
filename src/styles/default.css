@@ -43,3 +43,16 @@ body {
 	align-items: center;
 	flex: 1;
 }
+
+.success-toast {
+	background-color: #409988 !important;
+}
+
+.toast-msg {
+	font-family: "Raleway", "Helvetica", "Arial", "sans-serif";
+	font-size: 1.2rem;
+}
+
+.error-toast {
+	background-color: #a22e2e !important;
+}
