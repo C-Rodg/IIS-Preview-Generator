@@ -1,9 +1,12 @@
 {
 	"name": "preview-generator",
 	"version": "1.0.0",
-	"description": "A landing page for creating IIS virtual directories and applications using NodeJS.",
+	"description":
+		"A landing page for creating IIS virtual directories and applications using NodeJS.",
 	"main": "index.js",
 	"scripts": {
+		"dev":
+			"webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
 		"start": "node index.js",
 		"build": "webpack --config webpack.build.config.js",
 		"watch": "webpack --config webpack.build.config.js --watch"
@@ -12,11 +15,7 @@
 		"type": "git",
 		"url": "git+https://github.com/C-Rodg/IIS-Preview-Generator.git"
 	},
-	"keywords": [
-		"NodeJS",
-		"express",
-		"IIS"
-	],
+	"keywords": ["NodeJS", "express", "IIS"],
 	"author": "C-Rodg",
 	"license": "MIT",
 	"bugs": {

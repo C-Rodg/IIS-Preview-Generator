@@ -1,3 +1,43 @@
+@import "./raleway/raleway.css";
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+html {
+	height: 100%;
+}
+
 body {
-	background: gray;
+	margin: 0;
+	height: 100%;
+	font-family: "Raleway", "Helvetica", "Arial", "sans-serif";
+	display: flex;
+	flex-direction: column;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.app {
+	height: 100%;
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: #0b222e;
+	color: #f5f5f5;
+	overflow: hidden;
+}
+
+.container {
+	padding: 10px 15px;
+	display: flex;
+	flex-direction: column;
 }
