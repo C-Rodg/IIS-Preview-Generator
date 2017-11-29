@@ -17,28 +17,43 @@ const errorToast = {
 	bodyClassName: "toast-msg"
 };
 
+const infoToast = {
+	className: "info-toast",
+	bodyClassName: "toast-msg"
+};
+
 class App extends Component {
 	state = {
 		loading: false
 	};
-	createPreview = () => {
+	createPreview = postObj => {
 		// Set loading = true
 
 		this.setState({ loading: true }, () => {
 			// Call backend node service
-			// OnSuccess =>
-			//toast.success("Preview created successfully!", successToast);
-			//this.setState({ loading: false });
-			// OnError =>
-			//toast.success("Unable to create preview..", errorToast);
-			//this.setState({ loading: false });
+			axios
+				.post("/validar/create-preview", postObj)
+				.then(resp => {
+					console.log(resp);
+					if (resp && resp.data && resp.data.alreadyExists) {
+						toast.success("Preview already existed..", infoToast);
+					} else {
+						toast.success("Preview created successfully!", successToast);
+					}
+					this.setState({ loading: false });
+				})
+				.catch(err => {
+					console.log(err);
+					toast.success("Unable to create preview..", errorToast);
+					this.setState({ loading: false });
+				});
 		});
 	};
 
 	render() {
 		return (
 			<div className="app">
-				<ToastContainer autoClose={100000000} />
+				<ToastContainer autoClose={9000} />
 				<Header />
 				<main className="container">
 					{!this.state.loading ? (

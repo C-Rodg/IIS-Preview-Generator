@@ -32,10 +32,12 @@ const StyledCard = styled.div`
 
 	.card-actions {
 		display: flex;
-		text-transform: uppercase;
 		border-top: 1px solid #e7e7e7;
 
 		.action {
+			text-transform: uppercase;
+			border: 0;
+			outline: 0;
 			background-color: #fff;
 			transition: background-color 0.3s ease;
 			padding: 10px 0;
@@ -56,25 +58,37 @@ const StyledCard = styled.div`
 
 class Card extends Component {
 	state = {
+		parentFolderName: "2018",
 		folderName: "",
 		subfolderName: "V4.0",
 		error: false
 	};
 
+	// Update state for inputs
 	updateTextValue = (tag, ev) => {
 		this.setState({
 			[tag]: ev.target.value
 		});
 	};
 
-	validateConfig = () => {
-		if (!this.state.folderName || !this.state.subfolderName) {
+	// Validate configuration and send to backend service
+	validateConfig = ev => {
+		if (ev && ev.preventDefault) {
+			ev.preventDefault();
+		}
+		if (
+			!this.state.folderName ||
+			!this.state.subfolderName ||
+			!this.state.parentFolderName
+		) {
 			this.setState({
 				error: true
 			});
 		} else {
+			this.setState({ error: false });
 			this.props.onCreatePreview({
 				folderName: this.state.folderName,
+				parentFolderName: this.state.parentFolderName,
 				subfolderName: this.state.subfolderName
 			});
 		}
@@ -84,13 +98,20 @@ class Card extends Component {
 		return (
 			<StyledCard>
 				<div className="card-title">Create a Preview</div>
-				<form>
+				<form onSubmit={this.validateConfig}>
 					<div className="card-body">
 						<TextInput
 							val={this.state.folderName}
 							tag="folderName"
 							valChange={this.updateTextValue}
 							label="Preview Folder Name"
+							type="text"
+						/>
+						<TextInput
+							val={this.state.parentFolderName}
+							tag="parentFolderName"
+							valChange={this.updateTextValue}
+							label="Parent Folder Name"
 							type="text"
 						/>
 						<TextInput
@@ -107,9 +128,13 @@ class Card extends Component {
 						</StyledError>
 					)}
 					<div className="card-actions">
-						<div className="action" onClick={this.validateConfig}>
+						<button
+							type="submit"
+							className="action"
+							onClick={this.validateConfig}
+						>
 							Create
-						</div>
+						</button>
 					</div>
 				</form>
 			</StyledCard>

@@ -27,6 +27,7 @@
 	"dependencies": {
 		"axios": "^0.17.1",
 		"express": "^4.16.2",
+		"node-cmd": "^3.0.0",
 		"react-toastify": "^3.0.0"
 	},
 	"devDependencies": {

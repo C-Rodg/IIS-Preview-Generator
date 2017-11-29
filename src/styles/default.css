@@ -56,3 +56,7 @@ body {
 .error-toast {
 	background-color: #a22e2e !important;
 }
+
+.info-toast {
+	background-color: #e6ba0a !important;
+}
