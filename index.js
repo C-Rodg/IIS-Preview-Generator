@@ -8,11 +8,11 @@ const app = express();
 // Configure express middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/dist"));
 
 // Send application page
 app.get("/validar/create-preview", (req, res) => {
-	res.sendFile(__dirname + "/public/index.html");
+	res.sendFile(__dirname + "/dist/index.html");
 });
 
 // Launch server
