@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/dist"));
 
-const CC_DIR = `F:\\Program Files\\Validar\\Command Center 4.0.7.12633`;
+const CC_DIR = `C:\\Program Files (x86)\\Validar Incorporated\\Command Center\\Validar Command Center V4.0.11.14041`;
 
 // Send application page
 app.get("/validar/create-preview", (req, res) => {
