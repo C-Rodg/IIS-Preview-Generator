@@ -20,7 +20,6 @@ app.get("/validar/create-preview", (req, res) => {
 
 // Process creating a preview
 app.post("/validar/create-preview", (req, res) => {
-	console.log(req.body);
 	let alreadyExists = false;
 	addDirectory(req.body)
 		.then(data => {
